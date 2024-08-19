@@ -12,6 +12,10 @@
 		height: 90%;
 		mat-sidenav-container {
 			height: 100%;
+			.mat-drawer {
+				border-top-right-radius: 0% !important;
+				border-bottom-right-radius: 0% !important;
+			}
 		}
 	}
 }

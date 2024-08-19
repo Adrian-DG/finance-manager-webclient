@@ -12,9 +12,11 @@
 	<main>
 		<mat-sidenav-container>
 			<mat-sidenav #sidenav>
-				<app-link-list></app-link-list>
+				<app-link-list [options]="options"></app-link-list>
 			</mat-sidenav>
-			<mat-sidenav-content> </mat-sidenav-content>
+			<mat-sidenav-content>
+				<router-outlet></router-outlet>
+			</mat-sidenav-content>
 		</mat-sidenav-container>
 	</main>
 </div>
