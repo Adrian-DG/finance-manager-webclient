@@ -1,5 +1,5 @@
 <mat-list role="list">
-	@for (item of sidenavOptions; track $index) {
+	@for (item of options; track $index) {
 	<mat-list-item role="listitem">
 		<a [routerLink]="item.url" routerLinkActive="active" class="link">{{
 			item.name
