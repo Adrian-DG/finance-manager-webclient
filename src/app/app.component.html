@@ -1,5 +1,20 @@
-<div>
+<div id="main-container">
+	<header>
+		<mat-toolbar>
+			<mat-toolbar-row>
+				<button mat-icon-button (click)="sidenav.toggle()">
+					<mat-icon>menu</mat-icon>
+				</button>
+				<span>Finance Manager</span>
+			</mat-toolbar-row>
+		</mat-toolbar>
+	</header>
 	<main>
-		<router-outlet />
+		<mat-sidenav-container>
+			<mat-sidenav #sidenav>
+				<app-link-list></app-link-list>
+			</mat-sidenav>
+			<mat-sidenav-content> </mat-sidenav-content>
+		</mat-sidenav-container>
 	</main>
 </div>
