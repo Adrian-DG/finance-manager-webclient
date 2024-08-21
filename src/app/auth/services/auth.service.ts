@@ -20,8 +20,8 @@ export class AuthService extends GenericService {
 	}
 
 	private isAuthenticatedSource: WritableSignal<boolean> = signal(false);
-	public isAuthenticated$: Signal<boolean> = computed(() =>
-		this.isAuthenticatedSource()
+	public isAuthenticated$: Signal<boolean> = computed(
+		() => this.isAuthenticatedSource() // TODO: add codition for token validation
 	);
 
 	constructor(protected override $http: HttpClient) {

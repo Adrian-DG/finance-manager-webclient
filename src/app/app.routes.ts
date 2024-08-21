@@ -1,4 +1,7 @@
-import { Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router, Routes } from '@angular/router';
+import { AuthService } from './auth/services/auth.service';
+import { CheckIfAuthenticated } from './auth/guards/authetication.guard';
 
 export const routes: Routes = [
 	{
@@ -7,7 +10,7 @@ export const routes: Routes = [
 			import('./accounts/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		canActivate: [false], //  TODO: should be protected with an Authentication guard
+		canActivate: [() => CheckIfAuthenticated()], //  TODO: should be protected with an Authentication guard
 	},
 	{
 		path: 'authentication',
