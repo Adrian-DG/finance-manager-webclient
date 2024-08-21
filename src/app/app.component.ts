@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { LinkListComponent } from './shared/ui/link-list/link-list.component';
 import { IUrlOption } from './shared/models/Iurl-option.model';
+import { AuthService } from './auth/services/auth.service';
 
 @Component({
 	selector: 'app-root',
@@ -30,6 +31,8 @@ export class AppComponent {
 		{ name: 'Accounts', url: '/accounts' },
 		{ name: 'Incomes', url: '/incomes' },
 	];
+
+	constructor(public readonly _auth: AuthService) {}
 
 	toogleSidenav() {
 		this.isSidenavOpen = !this.isSidenavOpen;

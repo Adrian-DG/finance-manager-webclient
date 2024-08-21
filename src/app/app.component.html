@@ -2,10 +2,14 @@
 	<header>
 		<mat-toolbar>
 			<mat-toolbar-row>
+				@if(this._auth.isAuthenticated$(); as authenticated) {
 				<button mat-icon-button (click)="sidenav.toggle()">
 					<mat-icon>menu</mat-icon>
 				</button>
+
+				} @else {
 				<span>Finance Manager</span>
+				}
 			</mat-toolbar-row>
 		</mat-toolbar>
 	</header>
