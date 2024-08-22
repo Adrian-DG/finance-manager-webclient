@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+$txt-gray: #444343;
+$txt-white: #ffffff !important;
+$bg-primary: #66bb6a !important;
+$accent-primary: #388e3c !important;
+
+.mat-toolbar {
+	background-color: $bg-primary;
+	color: $txt-white;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+	background-color: $accent-primary;
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+	color: $accent-primary;
+}

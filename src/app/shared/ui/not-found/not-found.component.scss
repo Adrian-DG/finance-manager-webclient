@@ -1,13 +1,20 @@
-$icon-size: 60px;
+@import '../../../../styles.scss';
+
+$icon-size: 80px;
 
 #not-found-alert {
-	width: 90%;
+	padding: 0.5em;
+	width: 30%;
 	height: 30%;
 	margin: 5% auto;
 	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2em;
 	.header {
 		width: 90%;
-		color: gray;
+		color: $txt-gray;
 	}
 	.content {
 		width: 100%;
@@ -20,7 +27,12 @@ $icon-size: 60px;
 			width: $icon-size;
 			height: $icon-size;
 			font-size: $icon-size;
-			color: rgb(184, 113, 113);
+			color: $accent-primary;
+		}
+	}
+	.footer {
+		button {
+			width: 100% !important;
 		}
 	}
 }
