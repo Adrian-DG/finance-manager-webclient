@@ -26,3 +26,16 @@ $accent-primary: #388e3c !important;
 .mat-mdc-outlined-button:not(:disabled) {
 	color: $accent-primary;
 }
+
+.container {
+	width: 100%;
+	height: 100%;
+	.card-center {
+		width: 25%;
+		.card-content-v {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+		}
+	}
+}

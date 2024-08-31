@@ -6,7 +6,6 @@
 				<button mat-icon-button (click)="sidenav.toggle()">
 					<mat-icon>menu</mat-icon>
 				</button>
-
 				}
 				<span>Finance Manager</span>
 			</mat-toolbar-row>
@@ -17,7 +16,7 @@
 			<mat-sidenav #sidenav>
 				<app-link-list [options]="options"></app-link-list>
 			</mat-sidenav>
-			<mat-sidenav-content class="container">
+			<mat-sidenav-content>
 				<router-outlet></router-outlet>
 			</mat-sidenav-content>
 		</mat-sidenav-container>

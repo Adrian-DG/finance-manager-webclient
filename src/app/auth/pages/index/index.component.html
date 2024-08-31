@@ -1,13 +1,18 @@
-<mat-card class="card">
-	<mat-card-header class="header">
-		<mat-card-title class="title">Welcome</mat-card-title>
-		<mat-card-subtitle
-			>Let us help with your expenses and peace of mind</mat-card-subtitle
-		>
-	</mat-card-header>
-	<mat-card-content class="content">
-		<mat-icon></mat-icon>
-		<button mat-flat-button>Already have account</button>
-		<button mat-stroked-button>Don't have an account</button>
-	</mat-card-content>
-</mat-card>
+<div class="container">
+	<mat-card class="card-center">
+		<mat-card-header>
+			<mat-card-title>Welcome</mat-card-title>
+			<mat-card-subtitle
+				>Let us help with your expenses and peace of
+				mind</mat-card-subtitle
+			>
+		</mat-card-header>
+		<mat-card-content class="card-content-v">
+			<mat-icon></mat-icon>
+			<button mat-flat-button [routerLink]="['sign-in']">
+				Already have account
+			</button>
+			<button mat-stroked-button>Don't have an account</button>
+		</mat-card-content>
+	</mat-card>
+</div>

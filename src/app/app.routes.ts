@@ -14,10 +14,22 @@ export const routes: Routes = [
 	},
 	{
 		path: 'authentication',
-		loadComponent: () =>
-			import('./auth/pages/index/index.component').then(
-				(c) => c.IndexComponent
-			),
+		children: [
+			{
+				path: '',
+				loadComponent: () =>
+					import('./auth/pages/index/index.component').then(
+						(c) => c.IndexComponent
+					),
+			},
+			{
+				path: 'sign-in',
+				loadComponent: () =>
+					import('./auth/pages/signin/signin.component').then(
+						(c) => c.SigninComponent
+					),
+			},
+		],
 	},
 	{
 		path: '',
