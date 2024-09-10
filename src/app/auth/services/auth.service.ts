@@ -11,6 +11,7 @@ import { IRegisterUser } from '../dto/iregister-user.dto';
 import { IApiResponse } from '../../shared/models/iapi-response.model';
 import { IAuthenticatedReponse } from '../models/iauthenticted-response.model';
 import { ILoginUser } from '../dto/ilogin-user.dto';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
@@ -20,12 +21,9 @@ export class AuthService extends GenericService {
 		return 'auth';
 	}
 
-	private isAuthenticatedSource: WritableSignal<boolean> = signal(false);
-	public isAuthenticated$: Signal<boolean> = computed(
-		() => this.isAuthenticatedSource() // TODO: add codition for token validation
-	);
+	public isAuthenticated$: WritableSignal<boolean> = signal(false);
 
-	constructor(protected override $http: HttpClient) {
+	constructor(protected override $http: HttpClient, private $router: Router) {
 		super($http);
 	}
 
@@ -45,13 +43,11 @@ export class AuthService extends GenericService {
 			)
 			.subscribe((response: IApiResponse<IAuthenticatedReponse>) => {
 				const { message, status } = response;
-
 				if (status) {
-					// navigate to home
+					this.isAuthenticated$.set(status);
+					this.$router.navigate(['accounts']);
+					this._snackBar.open(message, '', this._snackBarConfig);
 				}
-
-				this.isAuthenticatedSource.set(status);
-				this._snackBar.open(message, '', this._snackBarConfig);
 			});
 	}
 }
