@@ -27,5 +27,14 @@ export class SigninComponent {
 		password: '',
 	};
 
-	constructor() {}
+	constructor(private _auth: AuthService) {}
+
+	get isCredetialsFormValid() {
+		const { username, password } = this.sigInDto;
+		return !(username !== '' && password !== '');
+	}
+
+	signIn() {
+		this._auth.loginUser(this.sigInDto);
+	}
 }
