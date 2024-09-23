@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, isDevMode } from '@angular/core';
 import { environment as dev } from '../../../environments/environment.dev';
 import { environment as prod } from '../../../environments/environment.prod';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { IPaginationFilter } from '../dto/ipagination-filter.dto';
 
 @Injectable({
 	providedIn: 'root',
@@ -27,4 +28,12 @@ export abstract class GenericService {
 	}
 
 	abstract getResourceUrl(): string;
+
+	getPaginationQueryParams(filters: IPaginationFilter) {
+		const { page, size, searchTerm } = filters;
+		return new HttpParams()
+			.set('page', page)
+			.set('size', size)
+			.set('searchTerm', searchTerm ?? '');
+	}
 }
