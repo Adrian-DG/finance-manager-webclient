@@ -5,7 +5,7 @@ import { inject } from '@angular/core';
 export const CheckIfAuthenticated = () => {
 	const _authService = inject(AuthService);
 	const $router = inject(Router);
-	const isAuthenticated = !_authService.isAuthenticated$();
+	const isAuthenticated = _authService.isAuthenticated$();
 	if (!isAuthenticated) {
 		console.log('Not authenticated!!');
 		$router.navigate(['authentication']);

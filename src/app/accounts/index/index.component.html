@@ -5,7 +5,8 @@
 	></app-page-intro>
 	<mat-card-content>
 		<div class="table-container">
-			<mat-table
+			<table
+				class="mat-elevation-z8"
 				mat-table
 				[dataSource]="resultData"
 				class="example-table"
@@ -15,37 +16,64 @@
 				matSortDirection="desc"
 			>
 				<ng-container matColumnDef="id">
-					<th mat-header-cell *matHeaderCellDef>#</th>
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header
+						disableClear
+					>
+						#
+					</th>
 					<td mat-cell *matCellDef="let row">{{ row.id }}</td>
+					<td mat-footer-cell *matFooterCellDef>
+						<b>Total</b>
+					</td>
 				</ng-container>
+
 				<ng-container matColumnDef="account">
 					<th mat-header-cell *matHeaderCellDef>Account</th>
 					<td mat-cell *matCellDef="let row">{{ row.name }}</td>
+					<td mat-footer-cell *matFooterCellDef></td>
 				</ng-container>
+
 				<ng-container matColumnDef="ammount">
 					<th mat-header-cell *matHeaderCellDef>Ammount</th>
 					<td mat-cell *matCellDef="let row">
-						{{ row.savedAmmount }}
+						{{ row.savedAmmount | currency : 'RD$' }}
+					</td>
+					<td mat-footer-cell *matFooterCellDef>
+						<b>{{ totalAmmount$ | async | currency : 'RD$' }}</b>
 					</td>
 				</ng-container>
+
 				<ng-container matColumnDef="actions">
 					<th mat-header-cell *matHeaderCellDef>Actions</th>
 					<td mat-cell *matCellDef="let row"></td>
+					<td mat-footer-cell *matFooterCellDef></td>
 				</ng-container>
+
+				<!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> -->
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 				<tr
 					mat-row
 					*matRowDef="let row; columns: displayedColumns"
 				></tr>
-			</mat-table>
+				<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+			</table>
 		</div>
 	</mat-card-content>
 	<mat-card-actions>
 		<mat-paginator
+			style="width: 100%"
+			(page)="loadData()"
 			[length]="resultsLength"
-			[pageSize]="30"
-			aria-label="Select page of GitHub search results"
-		></mat-paginator>
+			[pageSize]="10"
+			[pageSizeOptions]="[5, 10, 25, 100]"
+			[showFirstLastButtons]="true"
+			aria-label="Select page"
+		>
+		</mat-paginator>
 	</mat-card-actions>
 </mat-card>

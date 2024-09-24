@@ -1,4 +1,10 @@
-<mat-card-header>
+<mat-card-header class="header">
 	<mat-card-title>{{ pageTitle | titlecase }}</mat-card-title>
 	<mat-card-subtitle>{{ subText }}</mat-card-subtitle>
+	<div class="actions">
+		<mat-form-field style="width: 50%">
+			<mat-label>filtro</mat-label>
+			<input matInput [placeholder]="'nombre...'" />
+		</mat-form-field>
+	</div>
 </mat-card-header>

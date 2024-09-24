@@ -21,7 +21,7 @@ export class AuthService extends GenericService {
 		return 'auth';
 	}
 
-	public isAuthenticated$: WritableSignal<boolean> = signal(false);
+	public isAuthenticated$: WritableSignal<boolean> = signal(true); // change to false on Init
 
 	constructor(protected override $http: HttpClient, private $router: Router) {
 		super($http);

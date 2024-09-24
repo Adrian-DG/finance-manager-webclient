@@ -39,3 +39,7 @@ $accent-primary: #388e3c !important;
 		}
 	}
 }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+	background: none !important;
+}

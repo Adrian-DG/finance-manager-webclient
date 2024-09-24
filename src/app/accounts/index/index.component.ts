@@ -18,10 +18,13 @@ import {
 	startWith,
 	switchMap,
 	of as ObservableOf,
+	Subject,
+	ReplaySubject,
 } from 'rxjs';
 import { IApiResponse } from '../../shared/models/iapi-response.model';
 import { IPagedData } from '../../shared/models/ipaged-data.model';
 import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-index',
@@ -32,6 +35,7 @@ import { MatTableModule } from '@angular/material/table';
 		MatTableModule,
 		MatPaginatorModule,
 		MatSortModule,
+		CommonModule,
 	],
 	templateUrl: './index.component.html',
 	styleUrl: './index.component.scss',
@@ -42,6 +46,8 @@ export class IndexComponent implements AfterViewInit {
 	resultData!: any[];
 	resultsLength = 0;
 	isLoadingResults = true;
+	private totalAmmountSource = new ReplaySubject<number>(0);
+	totalAmmount$ = this.totalAmmountSource.asObservable();
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
@@ -49,6 +55,10 @@ export class IndexComponent implements AfterViewInit {
 	constructor(private _accounts: AccountService) {}
 
 	ngAfterViewInit(): void {
+		// this.loadData();
+	}
+
+	loadData() {
 		this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
 		merge(this.sort.sortChange, this.paginator.page)
@@ -74,6 +84,15 @@ export class IndexComponent implements AfterViewInit {
 					return data.records;
 				})
 			)
-			.subscribe((data) => (this.resultData = data));
+			.subscribe((data) => {
+				this.totalAmmountSource.next(this.getTotalSavingsAmmount(data));
+				this.resultData = data;
+			});
+	}
+
+	private getTotalSavingsAmmount(records: any[]): number {
+		return records
+			.map((v) => v.savedAmmount)
+			.reduce((acc, value) => acc + value, 0);
 	}
 }
