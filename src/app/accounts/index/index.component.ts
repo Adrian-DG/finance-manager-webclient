@@ -25,6 +25,8 @@ import { IApiResponse } from '../../shared/models/iapi-response.model';
 import { IPagedData } from '../../shared/models/ipaged-data.model';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
 	selector: 'app-index',
@@ -36,6 +38,8 @@ import { CommonModule } from '@angular/common';
 		MatPaginatorModule,
 		MatSortModule,
 		CommonModule,
+		MatButtonModule,
+		MatIconModule,
 	],
 	templateUrl: './index.component.html',
 	styleUrl: './index.component.scss',
