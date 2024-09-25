@@ -13,8 +13,6 @@ import { MatCardModule } from '@angular/material/card';
 	styleUrl: './tab-navigation.component.scss',
 })
 export class TabNavigationComponent {
-	@Input() title!: string;
-	@Input() description!: string;
 	@Input() links!: IUrlOption[];
 	activeLinkIndex = 0;
 

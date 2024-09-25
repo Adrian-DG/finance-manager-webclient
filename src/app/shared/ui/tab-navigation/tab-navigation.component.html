@@ -1,14 +1,5 @@
 <mat-card style="width: 95%; min-height: 20%; height: auto; margin: auto">
-	<mat-card-header
-		style="
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			align-items: center;
-		"
-	>
-		<mat-card-title>{{ title }}</mat-card-title>
-		<mat-card-subtitle>{{ description }}</mat-card-subtitle>
+	<mat-card-header>
 		<nav mat-tab-nav-bar [tabPanel]="tabPanel" style="width: 100%">
 			@for (link of links; track $index) {
 			<a
