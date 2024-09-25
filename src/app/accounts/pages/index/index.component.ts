@@ -5,8 +5,8 @@ import {
 	OnInit,
 	ViewChild,
 } from '@angular/core';
-import { AccountService } from '../services/account.service';
-import { PageIntroComponent } from '../../shared/ui/page-intro/page-intro.component';
+import { AccountService } from '../../services/account.service';
+import { PageIntroComponent } from '../../../shared/ui/page-intro/page-intro.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
@@ -21,8 +21,8 @@ import {
 	Subject,
 	ReplaySubject,
 } from 'rxjs';
-import { IApiResponse } from '../../shared/models/iapi-response.model';
-import { IPagedData } from '../../shared/models/ipaged-data.model';
+import { IApiResponse } from '../../../shared/models/iapi-response.model';
+import { IPagedData } from '../../../shared/models/ipaged-data.model';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
