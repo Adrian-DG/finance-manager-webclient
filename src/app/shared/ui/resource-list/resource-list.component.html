@@ -1,0 +1,49 @@
+<mat-list style="padding: 1em auto">
+	<!-- @for (shoe of typesOfShoes; track shoe) {
+      <mat-list-option>{{shoe}}</mat-list-option>
+    } -->
+
+	<mat-list-item>
+		<span
+			matListItemAvatar
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			"
+		>
+			<div>{{ avatar }}</div>
+		</span>
+		<span matListItemTitle>{{ title }}</span>
+		<span matListItemLine>{{ description }}</span>
+		<span matListItemMeta
+			><span style="font-size: 1rem; font-weight: bold">{{
+				ammount | currency : 'RD$'
+			}}</span></span
+		>
+
+		<span
+			matListItemMeta
+			style="
+				padding: 0.5em;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: flex-start;
+				flex-wrap: wrap;
+				gap: 1em;
+			"
+		>
+			<button mat-icon-button>
+				<mat-icon>edit</mat-icon>
+			</button>
+			<button mat-icon-button>
+				<mat-icon>remove_red_eye</mat-icon>
+			</button>
+			<button mat-icon-button>
+				<mat-icon>delete</mat-icon>
+			</button>
+		</span>
+	</mat-list-item>
+</mat-list>

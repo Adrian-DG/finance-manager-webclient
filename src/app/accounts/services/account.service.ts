@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from '../../shared/services/generic.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IApiResponse } from '../../shared/models/iapi-response.model';
 import { IPaginationFilter } from '../../shared/dto/ipagination-filter.dto';
+import { IPagedData } from '../../shared/models/ipaged-data.model';
+import { IAccountDetail } from '../models/iaccount-detail.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,8 +21,15 @@ export class AccountService extends GenericService {
 
 	getAllAccounts(filters: IPaginationFilter) {
 		const params = this.getPaginationQueryParams(filters);
-		return this.$http.get<IApiResponse<any>>(`${this.endpoint}`, {
-			params: params,
-		});
+		return this.$http
+			.get<IApiResponse<IPagedData<IAccountDetail>>>(`${this.endpoint}`, {
+				params: params,
+			})
+			.pipe(
+				map(
+					(response: IApiResponse<IPagedData<IAccountDetail>>) =>
+						response.data
+				)
+			);
 	}
 }

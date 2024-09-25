@@ -7,10 +7,19 @@ export const routes: Routes = [
 	{
 		path: 'accounts',
 		loadComponent: () =>
-			import('./accounts/index/index.component').then(
+			import('./accounts/pages/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		canActivate: [() => CheckIfAuthenticated()], //  TODO: should be protected with an Authentication guard
+		// canActivate: [() => CheckIfAuthenticated()], //  TODO: should be protected with an Authentication guard
+		children: [
+			{
+				path: 'all',
+				loadComponent: () =>
+					import('./accounts/components/list/list.component').then(
+						(c) => c.ListComponent
+					),
+			},
+		],
 	},
 	{
 		path: 'authentication',

@@ -1,0 +1,12 @@
+@for (item of records$(); track $index) {
+<app-resource-list
+	[avatar]="'A'"
+	[title]="item.name"
+	[description]="''"
+	[ammount]="item.savedAmmount"
+></app-resource-list>
+}
+<app-resource-paginator
+	[filter]="filters$()"
+	[totalCount]="totalCount$()"
+></app-resource-paginator>
