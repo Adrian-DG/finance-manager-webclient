@@ -8,11 +8,13 @@ import { LinkListComponent } from './shared/ui/link-list/link-list.component';
 import { IUrlOption } from './shared/models/Iurl-option.model';
 import { AuthService } from './auth/services/auth.service';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
 	imports: [
+		CommonModule,
 		RouterOutlet,
 		MatToolbarModule,
 		MatIconModule,

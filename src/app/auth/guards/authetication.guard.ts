@@ -1,16 +1,16 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
+import { map } from 'rxjs';
 
 export const CheckIfAuthenticated = () => {
-	const _authService = inject(AuthService);
 	const $router = inject(Router);
+	const _authService = inject(AuthService);
 	const isAuthenticated = _authService.isAuthenticated$();
-	if (!isAuthenticated) {
-		console.log('Not authenticated!!');
-		$router.navigate(['authentication']);
+	if (_authService.isAuthenticated$()) {
+		$router.navigate(['']);
+		_authService.showNotifySnackbar('Token invalid or expired');
 		return false;
 	}
-	console.log('Is Authenticated: ', isAuthenticated);
 	return true;
 };

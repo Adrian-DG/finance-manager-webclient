@@ -8,6 +8,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -15,5 +16,12 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes),
 		provideAnimationsAsync(),
 		provideHttpClient(),
+		importProvidersFrom([
+			JwtModule.forRoot({
+				config: {
+					tokenGetter: () => localStorage.getItem('access_token'),
+				},
+			}),
+		]),
 	],
 };

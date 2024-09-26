@@ -10,7 +10,7 @@ export const routes: Routes = [
 			import('./accounts/pages/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		// canActivate: [() => CheckIfAuthenticated()], //  TODO: should be protected with an Authentication guard
+		canActivate: [() => CheckIfAuthenticated()],
 		children: [
 			{
 				path: 'all',
@@ -30,6 +30,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'authentication',
+		canActivate: [() => !CheckIfAuthenticated()],
 		children: [
 			{
 				path: '',

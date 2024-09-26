@@ -2,7 +2,7 @@
 	<header>
 		<mat-toolbar>
 			<mat-toolbar-row>
-				@if(this._auth.isAuthenticated$(); as authenticated) {
+				@if(!this._auth.isAuthenticated$()) {
 				<button mat-icon-button (click)="sidenav.toggle()">
 					<mat-icon>menu</mat-icon>
 				</button>

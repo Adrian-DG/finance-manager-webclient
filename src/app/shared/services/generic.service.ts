@@ -5,6 +5,8 @@ import { environment as prod } from '../../../environments/environment.prod';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { IPaginationFilter } from '../dto/ipagination-filter.dto';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { IApiResponse } from '../models/iapi-response.model';
+import { NotifyDialogComponent } from '../ui/notify-dialog/notify-dialog.component';
 
 @Injectable({
 	providedIn: 'root',
@@ -44,5 +46,20 @@ export abstract class GenericService {
 			.set('page', page)
 			.set('size', size)
 			.set('searchTerm', searchTerm ?? '');
+	}
+
+	showNotifySnackbar(message: string) {
+		this._snackBar.open(message, '', this._snackBarConfig);
+	}
+
+	showNotifyDialog(response: IApiResponse<any>) {
+		this.dialogService.open(NotifyDialogComponent, {
+			...this.dialogConfig,
+			data: {
+				title: response.title,
+				message: response.message,
+				status: response.status,
+			},
+		});
 	}
 }
