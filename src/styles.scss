@@ -23,7 +23,8 @@ $accent-primary: #388e3c !important;
 	background-color: $accent-primary;
 }
 
-.mat-mdc-outlined-button:not(:disabled) {
+.mat-mdc-outlined-button:not(:disabled),
+.mat-mdc-flat-button:not(:disabled) {
 	color: $accent-primary;
 }
 

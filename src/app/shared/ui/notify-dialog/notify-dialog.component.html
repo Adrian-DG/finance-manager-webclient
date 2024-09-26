@@ -1,0 +1,9 @@
+<h5 matDialogTitle>{{ data.title }}</h5>
+<mat-dialog-content>
+	@if(data.status) {
+	<mat-icon>check_circle</mat-icon>
+	} @else {
+	<mat-icon>error</mat-icon>
+	}
+	<p>{{ data.message }}</p>
+</mat-dialog-content>

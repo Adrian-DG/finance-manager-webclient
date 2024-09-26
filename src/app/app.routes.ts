@@ -19,6 +19,13 @@ export const routes: Routes = [
 						(c) => c.ListComponent
 					),
 			},
+			{
+				path: 'create',
+				loadComponent: () =>
+					import(
+						'./accounts/components/account-form/account-form.component'
+					).then((c) => c.AccountFormComponent),
+			},
 		],
 	},
 	{

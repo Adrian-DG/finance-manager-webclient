@@ -6,6 +6,8 @@ import { IApiResponse } from '../../shared/models/iapi-response.model';
 import { IPaginationFilter } from '../../shared/dto/ipagination-filter.dto';
 import { IPagedData } from '../../shared/models/ipaged-data.model';
 import { IAccountDetail } from '../models/iaccount-detail.model';
+import { ICreateAccount } from '../dto/icreate-account.dto';
+import { NotifyDialogComponent } from '../../shared/ui/notify-dialog/notify-dialog.component';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,7 +21,9 @@ export class AccountService extends GenericService {
 		return 'accounts';
 	}
 
-	getAllAccounts(filters: IPaginationFilter) {
+	getAllAccounts(
+		filters: IPaginationFilter
+	): Observable<IPagedData<IAccountDetail>> {
 		const params = this.getPaginationQueryParams(filters);
 		return this.$http
 			.get<IApiResponse<IPagedData<IAccountDetail>>>(`${this.endpoint}`, {
@@ -31,5 +35,20 @@ export class AccountService extends GenericService {
 						response.data
 				)
 			);
+	}
+
+	createAccount(accountDto: ICreateAccount) {
+		this.$http
+			.post<IApiResponse<any>>(`${this.endpoint}`, accountDto)
+			.subscribe((resp: IApiResponse<any>) => {
+				this.dialogService.open(NotifyDialogComponent, {
+					...this.dialogConfig,
+					data: {
+						title: resp.title,
+						message: resp.message,
+						status: resp.status,
+					},
+				});
+			});
 	}
 }

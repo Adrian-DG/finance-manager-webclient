@@ -4,6 +4,7 @@ import { environment as dev } from '../../../environments/environment.dev';
 import { environment as prod } from '../../../environments/environment.prod';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { IPaginationFilter } from '../dto/ipagination-filter.dto';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,6 +20,14 @@ export abstract class GenericService {
 		horizontalPosition: 'center',
 		verticalPosition: 'bottom',
 		politeness: 'polite',
+	};
+
+	protected dialogService = inject(MatDialog);
+	protected dialogConfig: MatDialogConfig = {
+		hasBackdrop: true,
+		minHeight: 200,
+		minWidth: 400,
+		role: 'alertdialog',
 	};
 
 	constructor(protected readonly $http: HttpClient) {
