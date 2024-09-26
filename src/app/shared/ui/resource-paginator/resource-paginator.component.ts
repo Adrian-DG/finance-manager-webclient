@@ -14,4 +14,8 @@ import { IPaginationFilter } from '../../dto/ipagination-filter.dto';
 export class ResourcePaginatorComponent {
 	@Input() filter!: IPaginationFilter;
 	@Input() totalCount!: number;
+
+	get pageIndexNumber() {
+		return this.filter.page - 1;
+	}
 }

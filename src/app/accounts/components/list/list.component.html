@@ -1,6 +1,6 @@
 @for (item of records$(); track $index) {
 <app-resource-list
-	[avatar]="'A'"
+	[avatar]="item.name"
 	[title]="item.name"
 	[description]="''"
 	[ammount]="item.savedAmmount"

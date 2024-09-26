@@ -12,7 +12,7 @@ import { PageIntroComponent } from '../../../shared/ui/page-intro/page-intro.com
 })
 export class IndexComponent {
 	links: IUrlOption[] = [
-		{ url: '/accounts/all', name: 'list' },
-		{ url: '/accounts/create', name: 'form' },
+		{ url: '/accounts/all', name: 'accounts list' },
+		{ url: '/accounts/create', name: 'accounts formulary' },
 	];
 }

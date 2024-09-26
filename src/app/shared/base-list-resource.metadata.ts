@@ -4,7 +4,7 @@ import { IPagedData } from './models/ipaged-data.model';
 
 export abstract class BaseListResource<T> {
 	protected filters$ = signal<IPaginationFilter>({
-		page: 0,
+		page: 1,
 		size: 10,
 		searchTerm: '',
 	});

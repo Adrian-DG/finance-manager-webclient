@@ -16,4 +16,8 @@ export class ResourceListComponent {
 	@Input() title!: string;
 	@Input() description!: string;
 	@Input() ammount!: number;
+
+	get initialLetter() {
+		return this.avatar.charAt(0);
+	}
 }

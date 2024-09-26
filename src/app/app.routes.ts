@@ -26,6 +26,11 @@ export const routes: Routes = [
 						'./accounts/components/account-form/account-form.component'
 					).then((c) => c.AccountFormComponent),
 			},
+			{
+				path: '',
+				redirectTo: 'all',
+				pathMatch: 'full',
+			},
 		],
 	},
 	{

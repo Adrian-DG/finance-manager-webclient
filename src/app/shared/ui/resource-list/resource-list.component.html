@@ -1,4 +1,6 @@
-<mat-list style="padding: 1em auto">
+<mat-list
+	style="padding: 1em auto; max-height: 80%; height: auto; overflow-y: auto"
+>
 	<!-- @for (shoe of typesOfShoes; track shoe) {
       <mat-list-option>{{shoe}}</mat-list-option>
     } -->
@@ -13,7 +15,7 @@
 				align-items: center;
 			"
 		>
-			<div>{{ avatar }}</div>
+			<div>{{ initialLetter }}</div>
 		</span>
 		<span matListItemTitle>{{ title }}</span>
 		<span matListItemLine>{{ description }}</span>
