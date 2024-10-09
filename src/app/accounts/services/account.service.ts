@@ -40,15 +40,16 @@ export class AccountService extends GenericService {
 	createAccount(accountDto: ICreateAccount) {
 		this.$http
 			.post<IApiResponse<any>>(`${this.endpoint}`, accountDto)
-			.subscribe((resp: IApiResponse<any>) => {
-				this.dialogService.open(NotifyDialogComponent, {
-					...this.dialogConfig,
-					data: {
-						title: resp.title,
-						message: resp.message,
-						status: resp.status,
-					},
-				});
-			});
+			.subscribe((resp: IApiResponse<any>) =>
+				this.showNotifyDialog(resp)
+			);
+	}
+
+	deleteAccount(id: number) {
+		this.$http
+			.delete<IApiResponse<any>>(`${this.endpoint}/${id}`)
+			.subscribe((resp: IApiResponse<any>) =>
+				this.showNotifyDialog(resp)
+			);
 	}
 }
