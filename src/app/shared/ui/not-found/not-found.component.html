@@ -12,7 +12,9 @@
 	</mat-card-content>
 	<mat-card-footer class="footer">
 		<mat-card-actions>
-			<button mat-flat-button>Volver a inicio</button>
+			<button mat-flat-button [routerLink]="['authentication']">
+				Volver a inicio
+			</button>
 		</mat-card-actions>
 	</mat-card-footer>
 </mat-card>
