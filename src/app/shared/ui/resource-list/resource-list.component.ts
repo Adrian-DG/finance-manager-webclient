@@ -24,7 +24,7 @@ export class ResourceListComponent {
 		return this.avatar.charAt(0);
 	}
 
-	onDelete() {
+	onItemDeleteSelected() {
 		console.log('Emit Id: ', this.id);
 		this.deleteEvent.emit(this.id);
 	}
