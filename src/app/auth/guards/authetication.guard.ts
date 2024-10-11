@@ -7,9 +7,11 @@ export const CheckIfAuthenticated = () => {
 	const $router = inject(Router);
 	const _authService = inject(AuthService);
 	if (_authService.isAuthenticated$()) {
+		console.log('is not authenticated');
 		$router.navigate(['']);
 		_authService.showNotifySnackbar('Token invalid or expired');
 		return false;
 	}
+	console.log('is authenticated');
 	return true;
 };

@@ -10,7 +10,7 @@ export const routes: Routes = [
 			import('./accounts/pages/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		canActivate: [() => CheckIfAuthenticated()],
+		// canActivateChild: [() => CheckIfAuthenticated()],
 		children: [
 			{
 				path: 'all',
@@ -35,7 +35,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'authentication',
-		canActivate: [() => !CheckIfAuthenticated()],
+		// canActivate: [() => !CheckIfAuthenticated()],
 		children: [
 			{
 				path: '',
