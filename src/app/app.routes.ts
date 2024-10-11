@@ -5,6 +5,14 @@ import { CheckIfAuthenticated } from './auth/guards/authetication.guard';
 
 export const routes: Routes = [
 	{
+		path: 'incomes',
+		loadComponent: () =>
+			import('./incomes/pages/index/index.component').then(
+				(c) => c.IndexComponent
+			),
+		children: [],
+	},
+	{
 		path: 'accounts',
 		loadComponent: () =>
 			import('./accounts/pages/index/index.component').then(
