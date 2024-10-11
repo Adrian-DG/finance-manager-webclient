@@ -15,10 +15,15 @@ import {
 	styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
-	constructor(
-		public _dialogRef: MatDialogRef<ConfirmDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: { title: string; body: string }
-	) {}
+	constructor(public _dialogRef: MatDialogRef<ConfirmDialogComponent>) {}
 
-	confirm() {}
+	title = 'Delete record';
+	body = 'The following record will be removed, which to continue ?';
+
+	@Output('confirm') onConfirmEvent = new EventEmitter<boolean>();
+
+	confirm() {
+		this.onConfirmEvent.emit(true);
+		this._dialogRef.close();
+	}
 }

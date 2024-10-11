@@ -1,12 +1,12 @@
-import { inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { IPaginationFilter } from './dto/ipagination-filter.dto';
 import { IPagedData } from './models/ipaged-data.model';
+import { ConfirmDialogComponent } from './ui/confirm-dialog/confirm-dialog.component';
 import {
 	MatDialog,
 	MatDialogConfig,
 	MatDialogRef,
 } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from './ui/confirm-dialog/confirm-dialog.component';
 
 export abstract class BaseListResource<T> {
 	protected filters$ = signal<IPaginationFilter>({
@@ -16,7 +16,6 @@ export abstract class BaseListResource<T> {
 	});
 	protected records$ = signal<T[]>([]);
 	protected totalCount$ = signal<number>(0);
-	protected currentRecordId$ = signal<number>(0);
 
 	protected dialogConfig: MatDialogConfig = {
 		hasBackdrop: true,
@@ -25,12 +24,20 @@ export abstract class BaseListResource<T> {
 		role: 'alertdialog',
 	};
 
-	constructor(
-		protected _confirmDialog: MatDialog,
-		protected _confirmDialogRef: MatDialogRef<ConfirmDialogComponent>
-	) {}
+	protected confirmDialogRef!: MatDialogRef<ConfirmDialogComponent>;
 
-	abstract onItemDeleteClick(id: number): void;
+	constructor(protected _confirmDialog: MatDialog) {}
+
+	showConfirmDialog(): void {
+		this.confirmDialogRef = this._confirmDialog.open(
+			ConfirmDialogComponent,
+			{
+				...this.dialogConfig,
+			}
+		);
+	}
+
+	abstract onDeleteEvent(event: any): void;
 
 	abstract loadData(): void;
 }

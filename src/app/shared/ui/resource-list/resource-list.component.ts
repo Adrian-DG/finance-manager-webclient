@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -18,14 +18,13 @@ export class ResourceListComponent {
 	@Input() description!: string;
 	@Input() ammount!: number;
 
-	@Output() deleteEvent = new EventEmitter<number>();
+	@Output('onDelete') onDeleteEvent = new EventEmitter<number>();
 
 	get initialLetter() {
 		return this.avatar.charAt(0);
 	}
 
-	onItemDeleteSelected() {
-		console.log('Emit Id: ', this.id);
-		this.deleteEvent.emit(this.id);
+	delete() {
+		this.onDeleteEvent.emit(this.id);
 	}
 }
