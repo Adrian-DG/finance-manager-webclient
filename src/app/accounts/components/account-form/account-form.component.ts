@@ -24,6 +24,7 @@ import { AccountService } from '../../services/account.service';
 	],
 	templateUrl: './account-form.component.html',
 	styleUrl: './account-form.component.scss',
+	providers: [AccountService],
 })
 export class AccountFormComponent {
 	accountForm = new FormGroup({

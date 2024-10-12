@@ -8,6 +8,7 @@ import { IPagedData } from '../../shared/models/ipaged-data.model';
 import { IAccountDetail } from '../models/iaccount-detail.model';
 import { ICreateAccount } from '../dto/icreate-account.dto';
 import { NotifyDialogComponent } from '../../shared/ui/notify-dialog/notify-dialog.component';
+import { ISelectibleItem } from '../../shared/models/iselectible-item.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -33,6 +34,18 @@ export class AccountService extends GenericService {
 				map(
 					(response: IApiResponse<IPagedData<IAccountDetail>>) =>
 						response.data
+				)
+			);
+	}
+
+	getActiveAccounts(): Observable<ISelectibleItem[]> {
+		return this.$http
+			.get<IApiResponse<ISelectibleItem[]>>(
+				`${this.endpoint}/active-accounts`
+			)
+			.pipe(
+				map(
+					(response: IApiResponse<ISelectibleItem[]>) => response.data
 				)
 			);
 	}
