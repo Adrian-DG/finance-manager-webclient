@@ -10,7 +10,8 @@ export const routes: Routes = [
 			import('./incomes/pages/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		children: [],
+		loadChildren: () =>
+			import('./incomes/income.routes').then((c) => c.incomeRoutes),
 	},
 	{
 		path: 'accounts',
@@ -18,48 +19,13 @@ export const routes: Routes = [
 			import('./accounts/pages/index/index.component').then(
 				(c) => c.IndexComponent
 			),
-		// canActivateChild: [() => CheckIfAuthenticated()],
-		children: [
-			{
-				path: 'all',
-				loadComponent: () =>
-					import('./accounts/components/list/list.component').then(
-						(c) => c.ListComponent
-					),
-			},
-			{
-				path: 'create',
-				loadComponent: () =>
-					import(
-						'./accounts/components/account-form/account-form.component'
-					).then((c) => c.AccountFormComponent),
-			},
-			{
-				path: '',
-				redirectTo: 'all',
-				pathMatch: 'full',
-			},
-		],
+		loadChildren: () =>
+			import('./accounts/account.routes').then((c) => c.accountRoutes),
 	},
 	{
 		path: 'authentication',
-		// canActivate: [() => !CheckIfAuthenticated()],
-		children: [
-			{
-				path: '',
-				loadComponent: () =>
-					import('./auth/pages/index/index.component').then(
-						(c) => c.IndexComponent
-					),
-			},
-			{
-				path: 'sign-in',
-				loadComponent: () =>
-					import('./auth/pages/signin/signin.component').then(
-						(c) => c.SigninComponent
-					),
-			},
-		],
+		loadChildren: () =>
+			import('./auth/auth.routes').then((c) => c.authRoutes),
 	},
 	{
 		path: '',

@@ -1,0 +1,36 @@
+<form [formGroup]="incomeForm">
+	<div class="row">
+		<mat-form-field class="text-field">
+			<mat-label>Income name</mat-label>
+			<input matInput formControlName="name" />
+		</mat-form-field>
+		<mat-form-field class="text-field">
+			<mat-label>Ammount</mat-label>
+			<input
+				matInput
+				currencyMask
+				[options]="currencyMaskOptions"
+				formControlName="ammount"
+			/>
+		</mat-form-field>
+		<mat-form-field class="selecttion-field">
+			<mat-label>Frequency</mat-label>
+			<mat-select formControlName="frequency">
+				@for (item of frequencyArray; track $index) {
+				<mat-option [value]="item.id">{{ item.name }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field class="selection-field">
+			<mat-label>Account</mat-label>
+			<mat-select formControlName="frequency">
+				<mat-option [value]="1">accoun #1</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+	<app-action-button
+		[confirmTxt]="'create'"
+		[IsValid]="incomeForm.valid"
+		(confirmEvent)="create($event)"
+	></app-action-button>
+</form>

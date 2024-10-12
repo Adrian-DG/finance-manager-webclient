@@ -1,0 +1,16 @@
+form {
+	display: flex;
+	flex-direction: column;
+	.row {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 1em;
+		flex-wrap: wrap;
+		mat-form-field {
+			width: 45%;
+			flex-grow: 1;
+		}
+	}
+}

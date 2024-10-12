@@ -23,7 +23,6 @@ export class TabNavigationComponent {
 	}
 
 	navToTab(link: IUrlOption, index: number) {
-		console.log(link);
 		this.$router.navigate([link.url]);
 		this.activeLinkIndex = index;
 	}
